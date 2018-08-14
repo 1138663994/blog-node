@@ -1,8 +1,8 @@
 <template>
-    <div>
-        <p>{{msg}}</p>
-        <router-link :to="{name: 'page'}">go page</router-link>
-    </div>
+  <div>
+      <p>{{msg}}</p>
+      <router-link :to="{name: 'page'}">go page</router-link>
+  </div>
 </template>
 
 <script>

@@ -4,7 +4,9 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
-
+import { Button, Select } from 'element-ui'
+Vue.use(Button)
+Vue.use(Select)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
