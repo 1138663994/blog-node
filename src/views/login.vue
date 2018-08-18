@@ -1,17 +1,14 @@
 <template>
   <div class="login">
-    <el-form :label-position="labelPosition" label-width="80px" :model="formLabelAlign">
-      <el-form-item label="名称">
-        <el-input v-model="formLabelAlign.name"></el-input>
+    <el-form :label-position="labelPosition" label-width="80px" :model="ruleForm" :rules="rule" ref="ruleForm">
+      <el-form-item label="用户名" prop="name">
+        <el-input v-model.trim="ruleForm.name"></el-input>
       </el-form-item>
-      <el-form-item label="活动区域">
-        <el-input v-model="formLabelAlign.region"></el-input>
+      <el-form-item label="密码" prop="psw">
+        <el-input v-model.trim="ruleForm.psw"></el-input>
       </el-form-item>
-      <el-form-item label="活动形式">
-        <el-input v-model="formLabelAlign.type"></el-input>
-      </el-form-item>
+      <el-button type="primary"  @click="submitForm('ruleForm')">登录</el-button>
     </el-form>
-    <el-button type="primary">主要按钮</el-button>
   </div>
 </template>
 
@@ -21,11 +18,25 @@ export default {
   data () {
     return {
       labelPosition: 'right',
-      formLabelAlign: {
+      ruleForm: {
         name: '',
-        region: '',
-        type: ''
+        psw: ''
+      },
+      rule: {
+        name: [
+          { required: true, message: '请输入用户名', trigger: 'blur' },
+          { max: 16, message: '长度小于16个字符', trigger: 'blur' }
+        ],
+        psw: [
+          { required: true, message: '请输入密码', trigger: 'blur' },
+          { min: 6, max: 20, message: '密码长度为6-20位字符', trigger: 'blur' }
+        ]
       }
+    }
+  },
+  methods: {
+    submitForm (form) {
+      console.log('form', form)
     }
   }
 }
