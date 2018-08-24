@@ -37,6 +37,9 @@ export default {
   methods: {
     submitForm (form) {
       console.log('form', form)
+      this.$http.get('/home').then(resp => {
+        console.log('resp', resp.data)
+      })
     }
   }
 }

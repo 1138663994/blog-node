@@ -12,6 +12,7 @@ import { Button,
   Input,
   InputNumber
 } from 'element-ui'
+import http from './http'
 
 Vue.use(Button)
 Vue.use(Select)
@@ -19,6 +20,9 @@ Vue.use(Form)
 Vue.use(FormItem)
 Vue.use(Input)
 Vue.use(InputNumber)
+
+Vue.prototype.$http = http
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
