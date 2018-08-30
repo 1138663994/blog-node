@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from '@/views/index'
 import Page from './page'
 import Common from './common'
+import Article from './article'
 Vue.use(Router)
 
 export default new Router({
@@ -14,6 +15,7 @@ export default new Router({
       component: Home
     },
     ...Page,
-    ...Common
+    ...Common,
+    ...Article
   ]
 })

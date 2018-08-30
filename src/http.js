@@ -4,12 +4,12 @@ import { Message } from 'element-ui'
 // 创建axios实例
 const instance = axios.create({
   // baseURL: '/buyer2',
-  timeout: 1000 * 20, // 请求超时时间
-  headers: {
-    'Content-Type': 'application/json;charset=UTF-8;',
-    'X-Requested-With': 'XMLHttpRequest',
-    'If-Modified-Since': 'Thu, 01 Jun 1970 00:00:00 GMT' // 避免 IE10 返回 304
-  }
+  timeout: 1000 * 20 // 请求超时时间
+  // headers: {
+  //   'Content-Type': 'application/json;charset=UTF-8;',
+  //   'X-Requested-With': 'XMLHttpRequest',
+  //   'If-Modified-Since': 'Thu, 01 Jun 1970 00:00:00 GMT' // 避免 IE10 返回 304
+  // }
 })
 
 // request拦截器

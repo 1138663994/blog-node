@@ -7,7 +7,7 @@
       <el-form-item label="密码" prop="psw">
         <el-input v-model.trim="ruleForm.psw"></el-input>
       </el-form-item>
-      <el-button type="primary"  @click="submitForm('ruleForm')">登录</el-button>
+      <el-button type="primary"  @click="submitForm('ruleForm')">注册</el-button>
     </el-form>
   </div>
 </template>
@@ -43,17 +43,13 @@ export default {
             password: this.ruleForm.psw
           }
           console.log('params', params)
-          this.$http.post('/blog/login', params).then(resp => {
+          this.$http.post('/blog/register', params).then(resp => {
             console.log('resp', resp.data)
           })
         } else {
           console.log('error submit!!')
         }
       })
-      // return
-      // this.$http.post('/login', params).then(resp => {
-      //   console.log('resp', resp.data)
-      // })
     }
   }
 }

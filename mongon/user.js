@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+
 const Schema = mongoose.Schema
 
 const UserSchema = new Schema({
@@ -9,8 +10,7 @@ const UserSchema = new Schema({
   },
   email: {
     type: String,
-    required: true,
-    unique: true
+    required: false
   },
   password: {
     type: 'string',
@@ -24,4 +24,4 @@ const UserSchema = new Schema({
   }
 })
 
-module.exports = mongoose.model('User', UserSchema)
+module.exports = mongoose.model('User', UserSchema) // 会自动生成一个叫users的mongondb集合
