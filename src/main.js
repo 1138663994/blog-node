@@ -10,16 +10,22 @@ import { Button,
   Form,
   FormItem,
   Input,
-  InputNumber
+  InputNumber,
+  Table,
+  TableColumn,
+  Dialog
 } from 'element-ui'
 import http from './http'
 
+Vue.use(Dialog)
 Vue.use(Button)
 Vue.use(Select)
 Vue.use(Form)
 Vue.use(FormItem)
 Vue.use(Input)
 Vue.use(InputNumber)
+Vue.use(Table)
+Vue.use(TableColumn)
 
 Vue.prototype.$http = http
 

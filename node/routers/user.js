@@ -22,7 +22,8 @@ module.exports = {
     if (user && (password === user.password)) {
       ctx.session.user = {
         _id: user._id,
-        name: user.name
+        name: user.name,
+        isAdmin: user.isAdmin
       }
       ctx.body = { success: '登录成功' }
     } else {
