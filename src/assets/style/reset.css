@@ -1,0 +1,137 @@
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td {
+	margin:0;
+	padding:0;
+}
+table {
+	_border-collapse:collapse;
+	_border-spacing:1px;
+}
+fieldset,img {
+	border:0;
+}
+address,caption,cite,code,dfn,em,strong,th,var {
+	font-style:normal;
+	font-weight:normal;
+}
+li {
+	list-style:none;
+}
+caption,th {
+	text-align:left;
+}
+h1,h2,h3,h4,h5,h6 {
+	font-size:100%;
+	font-weight:normal;
+}
+q:before,q:after {
+	content:'';
+}
+abbr,acronym {
+	border:0;
+	font-variant:normal;
+}
+sup {
+	vertical-align:text-top;
+}
+sub {
+	vertical-align:text-bottom;
+}
+input,textarea,select {
+	font-family:inherit;
+	font-size:inherit;
+	font-weight:inherit;
+	background: none;
+}
+legend {
+	color:#333;
+}
+/* html {
+	overflow-y:auto;
+	overflow-x:hidden;
+} */
+textarea {
+	color:#333;
+}
+body {
+	overflow-x:hidden;
+	font-family: "Helvetica Neue For Number", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	
+}
+
+a {
+	text-decoration:none;
+}
+i{
+	font-style: normal;
+}
+input,button,select,textarea
+{
+      outline:none;
+     
+}
+.m10{
+	margin:10px;
+}
+.ml10{
+	margin-left: 10px;
+}
+.mr10{
+	margin-right: 10px;
+}
+.mt10{
+	margin-top: 10px;
+}
+.mb10{
+	margin-bottom: 10px;
+}
+.m20{
+	margin:20px;
+}
+.ml20{
+	margin-left: 20px;
+}
+.mr20{
+	margin-right: 20px;
+}
+.mt20{
+	margin-top: 20px;
+}
+.mb20{
+	margin-bottom: 20px;
+}
+.pl10{
+	padding-left: 10px;
+}
+.pr10{
+	padding-right: 10px;
+}
+.pt10{
+	padding-top: 10px;
+}
+.pb10{
+	padding-bottom: 10px;
+}
+.pl20{
+	padding-left: 20px;
+}
+.pr20{
+	padding-right: 20px;
+}
+.pt20{
+	padding-top: 20px;
+}
+.pb20{
+	padding-bottom: 20px;
+}
+.clearfix:after {
+    content: "";
+    display: block;
+    height: 0;
+    visibility:hidden;
+    clear: both;
+}
+.clearfix {
+    zoom: 1;
+}
+

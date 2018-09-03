@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import store from './store'
 import 'element-ui/lib/theme-chalk/index.css'
+import '@/assets/style/reset.css'
 import { Button,
   Select,
   Form,
@@ -13,7 +14,11 @@ import { Button,
   InputNumber,
   Table,
   TableColumn,
-  Dialog
+  Dialog,
+  Menu,
+  Submenu,
+  MenuItem,
+  MenuItemGroup
 } from 'element-ui'
 import http from './http'
 
@@ -26,6 +31,10 @@ Vue.use(Input)
 Vue.use(InputNumber)
 Vue.use(Table)
 Vue.use(TableColumn)
+Vue.use(Menu)
+Vue.use(Submenu)
+Vue.use(MenuItem)
+Vue.use(MenuItemGroup)
 
 Vue.prototype.$http = http
 

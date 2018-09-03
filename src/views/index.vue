@@ -1,7 +1,6 @@
 <template>
   <div>
-      <p>{{msg}}</p>
-      <router-link :to="{name: 'page'}">go page</router-link>
+    <router-link :to="{name: 'page'}">go page</router-link>
   </div>
 </template>
 

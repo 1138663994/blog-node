@@ -1,14 +1,36 @@
 <template>
   <div id="app">
-    <router-view/>
+    <div class="menu">
+      <c-menu></c-menu>
+    </div>
+    <div class="main">
+      <router-view/>
+    </div>
   </div>
 </template>
 
 <script>
+import CMenu from '@/components/CMenu'
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    CMenu
+  }
 }
 </script>
+
+<style lang="scss" scoped>
+.menu {
+  position: absolute;
+  left: 0;
+  top: 20px;
+  z-index: 9;
+}
+.main {
+  padding-left: 200px;
+}
+</style>
 
 <style>
 #app {

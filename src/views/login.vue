@@ -45,7 +45,7 @@ export default {
           console.log('params', params)
           this.$http.post('/blog/login', params).then(resp => {
             console.log('resp', resp.data)
-            this.$router.push({name: 'article'})
+            this.$router.push({name: 'home'})
           })
         } else {
           console.log('error submit!!')
