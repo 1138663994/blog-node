@@ -1,6 +1,8 @@
 <template>
   <div>
-    <router-link :to="{name: 'page'}">go page</router-link>
+    <div>本周计划</div>
+    <div>最新文章</div>
+    <div>月卡</div>
   </div>
 </template>
 

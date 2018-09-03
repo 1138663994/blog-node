@@ -1,29 +1,3 @@
-// let menuRouters = [
-//   {
-//     path: 'article',
-//     name: 'article',
-//     meta: {
-//       title: '文章管理',
-//       icon: 'el-icon-menu'
-//     },
-//     children: [{
-//       path: 'article/detail',
-//       name: 'article-detail',
-//       meta: {
-//         title: '文章详情',
-//         icon: 'el-icon-menu'
-//       }
-//     }]
-//   }, {
-//   path: 'home',
-//   name: 'home',
-//   meta: {
-//     title: '首页',
-//     icon: 'el-icon-menu'
-//   }
-// ]
-// export default menuRouters
-
 const menuRoutes = [
   {
     path: 'article',

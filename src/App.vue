@@ -3,6 +3,7 @@
     <div class="menu">
       <c-menu></c-menu>
     </div>
+    <div class="head"></div>
     <div class="main">
       <router-view/>
     </div>
@@ -24,11 +25,16 @@ export default {
 .menu {
   position: absolute;
   left: 0;
-  top: 20px;
+  top: 60px;
   z-index: 9;
 }
 .main {
   padding-left: 200px;
+}
+.head {
+  height: 50px;
+  width: 100%;
+  background: red;
 }
 </style>
 
@@ -39,6 +45,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
