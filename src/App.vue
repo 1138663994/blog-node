@@ -3,7 +3,9 @@
     <div class="menu">
       <c-menu></c-menu>
     </div>
-    <div class="head"></div>
+    <div class="head">
+      <c-head></c-head>
+    </div>
     <div class="main">
       <router-view/>
     </div>
@@ -12,11 +14,13 @@
 
 <script>
 import CMenu from '@/components/CMenu'
+import CHead from '@/components/CHead'
 
 export default {
   name: 'App',
   components: {
-    CMenu
+    CMenu,
+    CHead
   }
 }
 </script>
@@ -37,7 +41,6 @@ export default {
 .head {
   height: 50px;
   width: 100%;
-  background: red;
 }
 </style>
 

@@ -9,7 +9,7 @@
     <div>
       <el-button type="primary"  @click="add()">添加</el-button>
       <el-button type="primary"  @click="list()">列表</el-button>
-      <el-button type="primary"  @click="layout()">退出</el-button>
+      <el-button type="primary"  @click="layout()" size='mim'>退出</el-button>
     </div> -->
     <div>
       <el-table
