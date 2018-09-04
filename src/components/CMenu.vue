@@ -22,10 +22,11 @@
             </router-link>
           </el-submenu>
         </template>
+        <!-- 无子节点 -->
         <template v-else>
           <router-link :index="index + 1 + ''" :to="{name: item.name}" :key='index' class="router-link">
             <el-menu-item index="2">
-              <i class="el-icon-menu"></i>
+              <i class="icon" :class="item.meta.icon"></i>
               <span slot="title">{{item.name}}</span>
             </el-menu-item>
           </router-link>
@@ -52,5 +53,6 @@ export default {
 <style lang="scss" scoped>
 .cmenu {
   width: 200px;
+  text-align: left;
 }
 </style>

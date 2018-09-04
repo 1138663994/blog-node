@@ -43,7 +43,7 @@ export default {
             password: this.ruleForm.psw
           }
           console.log('params', params)
-          this.$http.post('/blog/login', params).then(resp => {
+          this.$http.post('/login', params).then(resp => {
             console.log('resp', resp.data)
             this.$router.push({name: 'home'})
           })

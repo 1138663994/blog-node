@@ -23,6 +23,14 @@ const PostSchema = new Schema({
     type: Number,
     default: 0
   },
+  isOpen: {
+    type: Boolean,
+    default: false
+  },
+  category: {
+    type: Schema.Types.ObjectId,
+    ref: 'articleCategory'
+  },
   meta: {
     createdAt: {
       type: Date,

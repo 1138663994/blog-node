@@ -25,8 +25,11 @@ export default {
 .menu {
   position: absolute;
   left: 0;
-  top: 60px;
+  top: 50px;
   z-index: 9;
+  bottom: 0;
+  background: #fff;
+  border-right: 1px solid #eee;
 }
 .main {
   padding-left: 200px;
@@ -38,12 +41,20 @@ export default {
 }
 </style>
 
-<style>
+<style lang="scss">
+html, body {
+  height: 100%;
+  width: 100%;
+  background: #f5f4f3
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  .el-menu {
+    border-right: none;
+  }
 }
 </style>

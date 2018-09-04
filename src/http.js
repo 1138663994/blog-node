@@ -3,7 +3,7 @@ import { Message } from 'element-ui'
 
 // 创建axios实例
 const instance = axios.create({
-  // baseURL: '/buyer2',
+  baseURL: '/blog',
   timeout: 1000 * 20 // 请求超时时间
   // headers: {
   //   'Content-Type': 'application/json;charset=UTF-8;',

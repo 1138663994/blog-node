@@ -1,5 +1,13 @@
 const menuRoutes = [
   {
+    path: 'home',
+    name: 'Home',
+    meta: {
+      title: '首页',
+      icon: 'el-icon-menu'
+    }
+  },
+  {
     path: 'article',
     name: 'article',
     meta: {
@@ -15,19 +23,12 @@ const menuRoutes = [
       }
     }, {
       path: 'article/detail',
-      name: 'article-detail',
+      name: 'article-add',
       meta: {
-        title: '文章详情',
+        title: '新增文章',
         icon: 'el-icon-menu'
       }
     }]
-  }, {
-    path: 'home',
-    name: 'Home',
-    meta: {
-      title: '首页',
-      icon: 'el-icon-menu'
-    }
   }
 ]
 
