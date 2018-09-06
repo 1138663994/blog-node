@@ -24,7 +24,10 @@ import { Button,
   Submenu,
   MenuItem,
   MenuItemGroup,
-  Switch
+  Switch,
+  DatePicker,
+  Loading,
+  Pagination
 } from 'element-ui'
 import http from './http'
 
@@ -45,6 +48,9 @@ Vue.use(MenuItemGroup)
 Vue.use(Option)
 Vue.use(OptionGroup)
 Vue.use(Switch)
+Vue.use(DatePicker)
+Vue.use(Loading)
+Vue.use(Pagination)
 
 Vue.prototype.$http = http
 

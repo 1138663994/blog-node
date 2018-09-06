@@ -1,6 +1,6 @@
 const articleModel = require('../../mongon/article')
 const categoryModel = require('../../mongon/articleCategory')
-
+const constants = require('../constant')
 module.exports = {
   async add (ctx, next) {
     let { content, title, category, isOpen } = ctx.request.body
@@ -23,8 +23,31 @@ module.exports = {
     }
   },
   async list (ctx, next) {
-    const result = await articleModel.find({}).populate({path: 'category', select: 'name'})
-    ctx.body = result
+    let {order, title} = ctx.request.body
+    let result
+    let norder
+    if (order === 'desc') {
+      norder = -1
+    } else {
+      norder = 1
+    }
+    let obj = {}
+    if (title) {
+      obj = Object.assign(obj, {
+        title: new RegExp(title, 'i')
+      })
+    }
+    result = await articleModel.find(obj, null, {sort: {'_id': norder}}).populate({path: 'category', select: 'name'})
+    let size = await articleModel.count(obj, null, {sort: {'_id': norder}}).populate({path: 'category', select: 'name'})
+    // let result = await articleModel.find({}).populate({path: 'category', select: 'name'})
+    let pageSize = constants.pageSize
+    let pageCount = Math.ceil(size / pageSize)
+    ctx.body = {
+      rows: result,
+      total: size,
+      pageSize,
+      pageCount
+    }
   },
   async remove (ctx, next) {
     let {id} = ctx.request.body

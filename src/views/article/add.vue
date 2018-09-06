@@ -95,7 +95,7 @@ export default {
       line-height: 40px;
       border: none;
       width: 100%;
-      background-color: #efefef;
+      background-color: #fff;
       color: #4f4f4f;
       padding: 0 16px;
       box-sizing: border-box;

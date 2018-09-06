@@ -21,14 +21,16 @@ const menuRoutes = [
         title: '文章列表',
         icon: 'el-icon-menu'
       }
-    }, {
+    },
+    {
       path: 'article/detail',
       name: 'article-add',
       meta: {
         title: '新增文章',
         icon: 'el-icon-menu'
       }
-    }]
+    }
+    ]
   }
 ]
 
