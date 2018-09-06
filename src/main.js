@@ -8,6 +8,7 @@ import mavonEditor from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
 import 'element-ui/lib/theme-chalk/index.css'
 import '@/assets/style/reset.css'
+import $ from 'jquery' // eslint-disable-line
 import { Button,
   Select,
   Option,
