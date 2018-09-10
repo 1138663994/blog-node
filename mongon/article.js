@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const PostSchema = new Schema({
+const articleSchema = new Schema({
   authorId: {
     type: Schema.Types.ObjectId,
     ref: 'User',
@@ -43,7 +43,7 @@ const PostSchema = new Schema({
   }
 })
 
-PostSchema.pre('save', function (next) {
+articleSchema.pre('save', function (next) {
   if (this.isNew) {
     this.meta.createdAt = this.meta.updatedAt = Date.now()
   } else {
@@ -52,4 +52,4 @@ PostSchema.pre('save', function (next) {
   next()
 })
 
-module.exports = mongoose.model('Post', PostSchema)
+module.exports = mongoose.model('article', articleSchema)

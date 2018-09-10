@@ -7,6 +7,20 @@
     <div>
       <div id="fullcalendar"></div>
     </div>
+    <div>
+      <el-dialog
+        title="今日记录"
+        :visible.sync="dialogVisible"
+        width="30%"
+        >
+        <span>这是一段信息</span>
+        <textarea v-model="txtVal"></textarea>
+        <span slot="footer" class="dialog-footer">
+          <el-button @click="dialogVisible = false">取 消</el-button>
+          <el-button type="primary" @click="diaryHandle">确 定</el-button>
+        </span>
+      </el-dialog>
+    </div>
   </div>
 </template>
 
@@ -21,6 +35,13 @@ export default {
   data () {
     return {
       instance: null,
+      dataList: [{
+        title: 'sdld',
+        start: '2018-09-09'
+      }],
+      dialogVisible: false,
+      dateClick: '',
+      txtVal: '',
       defaultOptions: {
         header: {
           left: 'prev,next today',
@@ -31,21 +52,46 @@ export default {
         navLinks: true, // can click day/week names to navigate views
         editable: true,
         eventLimit: true,
+        events: this.dataList,
         dayClick: (date, allDay, jsEvent, view) => {
-          console.log('date', date.format())
-          console.log('allDay', allDay)
-          console.log('jsEvent', jsEvent)
-          console.log('view', view)
+          this.dateClick = date.format()
+          this.dialogVisible = true
         }
       }
     }
   },
   mounted () {
     this.instance = $('#fullcalendar').fullCalendar(this.defaultOptions) // eslint-disable-line
+    this.getList()
   },
   methods: {
     dayClick (item) {
       console.log(item)
+    },
+    diaryHandle () {
+      let params = {
+        content: this.txtVal,
+        createTime: this.dateClick
+      }
+      this.$http.post('/diary/add', params).then(resp => {
+        console.log('resp', resp.data)
+        this.dialogVisible = false
+      })
+      console.log('params', params)
+    },
+    getList () {
+      this.$http.post('/diary/list').then(resp => {
+        console.log('diaryList', resp.data)
+        let list = []
+        resp.data.map(item => {
+          list.push({
+            title: item.content,
+            start: item.createTime
+          })
+        })
+        this.dataList = list
+        console.log('dataList', this.dataList)
+      })
     }
   }
 }

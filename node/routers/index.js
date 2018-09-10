@@ -23,6 +23,9 @@ module.exports = (app) => {
   router.post('/article/edit', isLoginUser, require('./article').edit)
   router.post('/articleCategory/list', isLoginUser, require('./articleCategory').list)
   router.post('/articleCategory/add', isLoginUser, require('./articleCategory').add)
+  router.post('/diary/add', isLoginUser, require('./diary').add)
+  router.post('/diary/list', isLoginUser, require('./diary').list)
+
   app
     .use(router.routes())
     .use(router.allowedMethods())
