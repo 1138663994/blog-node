@@ -52,7 +52,7 @@ export default {
         navLinks: true, // can click day/week names to navigate views
         editable: true,
         eventLimit: true,
-        events: this.dataList,
+        events: [],
         dayClick: (date, allDay, jsEvent, view) => {
           this.dateClick = date.format()
           this.dialogVisible = true
@@ -61,14 +61,14 @@ export default {
     }
   },
   mounted () {
-    this.instance = $('#fullcalendar').fullCalendar(this.defaultOptions) // eslint-disable-line
     this.getList()
   },
   methods: {
     dayClick (item) {
       console.log(item)
     },
-    diaryHandle () {
+    diaryHandle (event) {
+      console.log('event', event)
       let params = {
         content: this.txtVal,
         createTime: this.dateClick
@@ -76,6 +76,7 @@ export default {
       this.$http.post('/diary/add', params).then(resp => {
         console.log('resp', resp.data)
         this.dialogVisible = false
+        event.title = this.txtVal
       })
       console.log('params', params)
     },
@@ -89,8 +90,12 @@ export default {
             start: item.createTime
           })
         })
-        this.dataList = list
-        console.log('dataList', this.dataList)
+        let options = Object.assign(this.defaultOptions, {
+          events: list
+        })
+        $('#fullcalendar').fullCalendar(options) // eslint-disable-line
+        // $('#calendar').fullCalendar('updateEvent', list) // eslint-disable-line
+        // this.dataList = list
       })
     }
   }
