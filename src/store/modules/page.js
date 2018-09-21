@@ -1,4 +1,3 @@
-console.log('page')
 const page = {
   state: {
     count: 0,

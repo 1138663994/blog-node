@@ -17,7 +17,7 @@ export default {
     }
   },
   mounted () {
-    console.log(this.demo)
+    console.log('pagess', this.demo)
   },
   methods: {
     add () {
