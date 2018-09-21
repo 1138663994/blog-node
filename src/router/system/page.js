@@ -1,5 +1,5 @@
-import Page from '@/views/page/'
-import Home from '@/views/home/'
+import Page from '@/views/system/page/'
+import Home from '@/views/system/home/'
 
 const page = [
   {

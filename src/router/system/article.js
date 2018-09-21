@@ -1,6 +1,6 @@
-import Add from '@/views/article/add'
-import Detail from '@/views/article/detail'
-import List from '@/views/article/list'
+import Add from '@/views/system/article/add'
+import Detail from '@/views/system/article/detail'
+import List from '@/views/system/article/list'
 
 let article = [
   {
