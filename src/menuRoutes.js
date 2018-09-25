@@ -1,7 +1,7 @@
 const menuRoutes = [
   {
     path: 'home',
-    name: 'Home',
+    name: 'home',
     meta: {
       title: '首页',
       icon: 'el-icon-menu'

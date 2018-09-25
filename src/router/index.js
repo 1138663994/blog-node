@@ -1,20 +1,24 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/views/home/'
-import Page from './page'
 import Common from './common'
-import Article from './article'
+import Systemlayout from './system'
+import blogLayout from './blog'
+import NoFound from '@/views/404'
 Vue.use(Router)
 
+console.log('Systemlayout', Systemlayout)
 export default new Router({
   routes: [
     {
-      path: '/home',
-      name: 'Home',
-      component: Home
+      path: '*',
+      component: NoFound
     },
-    ...Page,
+    {
+      path: '/',
+      redirect: '/blog/home'
+    },
+    ...Systemlayout,
     ...Common,
-    ...Article
+    ...blogLayout
   ]
 })

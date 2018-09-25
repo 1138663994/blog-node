@@ -4,6 +4,8 @@ const Koa = require('koa')
 
 const session = require('koa-session') // 可以让koa使用session 例如ctx.session.user = {}
 const bodyParser = require('koa-bodyparser') // 解析post参数
+const path = require('path')
+const static = require('koa-static')
 
 const app = new Koa()
 // const user = require('./routers/user')
@@ -15,6 +17,12 @@ mongoose.connect(CONFIG.mongodb)
 
 app.keys = ['nodeDemo']
 app.use(bodyParser())
+
+const staticPath = '../dist'
+ 
+app.use(static(
+  path.join( __dirname,  staticPath)
+))
 
 app.use(session({
   key: CONFIG.session.key,
