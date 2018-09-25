@@ -61,6 +61,7 @@ export default {
     }
   },
   mounted () {
+    $('#fullcalendar').fullCalendar(this.defaultOptions)
     this.getList()
   },
   methods: {
@@ -76,7 +77,9 @@ export default {
       this.$http.post('/diary/add', params).then(resp => {
         console.log('resp', resp.data)
         this.dialogVisible = false
-        event.title = this.txtVal
+        this.getList()
+        // $('#fullcalendar').fullCalendar('removeEvents')
+        // $('#fullcalendar').fullCalendar('renderEvents', list, true)
       })
       console.log('params', params)
     },
@@ -93,7 +96,9 @@ export default {
         let options = Object.assign(this.defaultOptions, {
           events: list
         })
-        $('#fullcalendar').fullCalendar(options) // eslint-disable-line
+        $('#fullcalendar').fullCalendar('removeEvents') // eslint-disable-line
+        $('#fullcalendar').fullCalendar('renderEvents', list, true) // eslint-disable-line
+        // $('#fullcalendar').fullCalendar(options) // eslint-disable-line
         // $('#calendar').fullCalendar('updateEvent', list) // eslint-disable-line
         // this.dataList = list
       })
