@@ -11,7 +11,7 @@ async function isLoginUser (ctx, next) {
   await next()
 }
 const router = new Router({
-  prefix: '/blog'
+  prefix: '/blogapi'
 })
 module.exports = (app) => {
   router.post('/register', require('./user').register)
