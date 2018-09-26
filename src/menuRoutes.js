@@ -1,7 +1,7 @@
 const menuRoutes = [
   {
     path: 'home',
-    name: 'home',
+    name: 'system-home',
     meta: {
       title: '首页',
       icon: 'el-icon-menu'
@@ -16,7 +16,7 @@ const menuRoutes = [
     },
     children: [{
       path: 'article',
-      name: 'article',
+      name: 'system-article',
       meta: {
         title: '文章列表',
         icon: 'el-icon-menu'
@@ -24,7 +24,7 @@ const menuRoutes = [
     },
     {
       path: 'article/detail',
-      name: 'article-add',
+      name: 'system-article-add',
       meta: {
         title: '新增文章',
         icon: 'el-icon-menu'

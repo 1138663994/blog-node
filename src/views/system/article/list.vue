@@ -72,6 +72,16 @@
         </el-table-column>
       </el-table>
     </div>
+    <el-dialog
+      title="提示"
+      :visible.sync="removeFlag"
+      width="30%">
+      <span>确定删除当前文章吗</span>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="removeFlag = false">取 消</el-button>
+        <el-button type="primary" @click="removeHandle">确 定</el-button>
+      </span>
+    </el-dialog>
     <div class="pages">
       <el-pagination
         @size-change="handleSizeChange"
@@ -82,21 +92,6 @@
         :total="total">
       </el-pagination>
     </div>
-    <el-dialog
-      title="提示"
-      :visible.sync="dialogVisible"
-      width="30%">
-      <div>
-        <input type="text" v-model="dialogList.title" placeholder="请输入标题" />
-      </div>
-      <div>
-        <textarea v-model="dialogList.content" cols="30" rows="10"></textarea>
-      </div>
-      <span slot="footer" class="dialog-footer">
-        <el-button @click="dialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="modifySure">确 定</el-button>
-      </span>
-    </el-dialog>
   </div>
 </template>
 
@@ -109,11 +104,11 @@ export default {
       loadFlag: false,
       txtVal: '',
       listData: [],
-      dialogVisible: false,
       dialogList: {
         title: '',
         content: ''
       },
+      removeFlag: false,
       inputVal: '',
       categoryList: [],
       category: '',
@@ -151,7 +146,8 @@ export default {
         title: ''
       },
       total: 1,
-      currentPage: 1
+      currentPage: 1,
+      removeId: ''
     }
   },
   mounted () {
@@ -205,30 +201,22 @@ export default {
       })
     },
     remove (item) {
+      this.removeFlag = true
+      this.removeId = item._id
+    },
+    removeHandle () {
       let params = {
-        id: item._id
+        id: this.removeId
       }
       this.$http.post('/article/remove', params).then(resp => {
         console.log('remove', resp.data)
+        this.removeFlag = false
         this.list()
       })
     },
     edit (item) {
-      this.dialogVisible = true
-      this.dialogList = {
-        title: item.title,
-        content: item.content,
-        id: item._id
-      }
-    },
-    modifySure () {
-      console.log('modify', this.dialogList)
-      let params = this.dialogList
-      this.$http.post('/article/edit', params).then(resp => {
-        console.log('edit', resp.data)
-        this.dialogVisible = false
-        this.list()
-      })
+      console.log('item', item)
+      this.$router.push({name: 'system-article-edit', query: {id: item._id}})
     }
   }
 }

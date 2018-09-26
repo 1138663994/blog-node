@@ -1,6 +1,5 @@
-import Page from '@/views/system/page/'
-import Home from '@/views/system/home/'
-
+const Home = () => import('@/views/system/home/')
+const Page = () => import('@/views/system/page/')
 const page = [
   {
     path: 'page',
@@ -9,7 +8,7 @@ const page = [
   },
   {
     path: 'home',
-    name: 'home',
+    name: 'system-home',
     component: Home
   }
 ]

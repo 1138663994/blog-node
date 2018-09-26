@@ -22,7 +22,7 @@ module.exports = {
       ctx.body = result
     }
   },
-  async list (ctx, next) {
+  async list (ctx, next) { // TODO: 分页，时间查询还没实现
     let {order, title} = ctx.request.body
     let result
     let norder
@@ -49,18 +49,28 @@ module.exports = {
       pageCount
     }
   },
+  async blogHomeList (ctx, next) {
+    let result = await articleModel.find({'isOpen': true}).populate({path: 'category', select: 'name'}).limit(10)
+    ctx.body = result
+  },
   async remove (ctx, next) {
     let {id} = ctx.request.body
-    console.log('id', id)
     const result = await articleModel.findByIdAndRemove(id)
     ctx.body = result
   },
   async edit (ctx, next) {
-    let {id, title, content} = ctx.request.body
+    let {id, title, content, category, isOpen} = ctx.request.body
     const result = await articleModel.findByIdAndUpdate(id, {
       title,
-      content
+      content,
+      category,
+      isOpen
     })
+    ctx.body = result
+  },
+  async detail (ctx, next) {
+    let {id} = ctx.request.body
+    const result = await articleModel.findById(id).populate({path: 'category', select: 'name'})
     ctx.body = result
   }
 }

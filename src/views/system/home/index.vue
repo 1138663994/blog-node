@@ -61,7 +61,7 @@ export default {
     }
   },
   mounted () {
-    $('#fullcalendar').fullCalendar(this.defaultOptions)
+    $('#fullcalendar').fullCalendar(this.defaultOptions) // eslint-disable-line
     this.getList()
   },
   methods: {
@@ -93,9 +93,9 @@ export default {
             start: item.createTime
           })
         })
-        let options = Object.assign(this.defaultOptions, {
-          events: list
-        })
+        // let options = Object.assign(this.defaultOptions, {
+        //   events: list
+        // })
         $('#fullcalendar').fullCalendar('removeEvents') // eslint-disable-line
         $('#fullcalendar').fullCalendar('renderEvents', list, true) // eslint-disable-line
         // $('#fullcalendar').fullCalendar(options) // eslint-disable-line

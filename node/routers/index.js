@@ -19,11 +19,14 @@ module.exports = (app) => {
   router.post('/loginout', require('./user').loginOut)
   router.post('/article/add', isLoginUser, require('./article').add)
   router.post('/article/list', isLoginUser, require('./article').list)
+  router.post('/article/blogHomeList', isLoginUser, require('./article').blogHomeList)
   router.post('/article/remove', isLoginUser, require('./article').remove)
   router.post('/article/edit', isLoginUser, require('./article').edit)
+  router.post('/article/getDetail', isLoginUser, require('./article').detail)
   router.post('/articleCategory/list', isLoginUser, require('./articleCategory').list)
   router.post('/articleCategory/add', isLoginUser, require('./articleCategory').add)
   router.post('/diary/add', isLoginUser, require('./diary').add)
+  router.post('/diary/list', isLoginUser, require('./diary').list)
   router.post('/diary/list', isLoginUser, require('./diary').list)
 
   app

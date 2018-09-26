@@ -7,7 +7,7 @@
       <div class="startList">
         <ul>
           <li>
-            <a href="javascript:;" class="active">网站首页</a>
+            <router-link :to='{name: "blog-home"}'>网站首页</router-link>
           </li>
           <li>
             <a href="javascript:;">关于我</a>

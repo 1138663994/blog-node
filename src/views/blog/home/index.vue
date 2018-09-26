@@ -2,47 +2,16 @@
   <div class="clearfix">
     <div class="cmain">
       <div class="blogs_box">
-        <div class="blog">
-          <h3 class="blogtitle"><a href="javascript:;" target="_blank">作为一个设计师,如果遭到质疑你是否能恪守自己的原则</a></h3>
-          <span class="blogpic"><a href="/more/show/19.html" title="作为一个设计师,如果遭到质疑你是否能恪守自己的原则"><img src="http://www.yangqq.com/d/file/news/life/2018-06-29/75842f4d1e18d692a66c38eb172a40ab.jpg" alt="作为一个设计师,如果遭到质疑你是否能恪守自己的原则"></a></span>
-          <p class="blogtext">曾经有站长找我求助，他说他不知道该怎么办，自己做出来的网站，不仅没有得到大家的认可，反而让大家给他开了一个评判大会。他自己认为已经是做的最好的，却遭受大家无情的... </p>
+        <div class="blog" v-for='item in dataList' :key="item._id">
+          <h3 class="blogtitle">
+            <router-link :to='{name: "blog-detail", query: {id: item._id}}'>{{item.title}}</router-link>
+          </h3>
+          <!-- <span class="blogpic"><a href="/more/show/19.html" title="作为一个设计师,如果遭到质疑你是否能恪守自己的原则"><img src="http://www.yangqq.com/d/file/news/life/2018-06-29/75842f4d1e18d692a66c38eb172a40ab.jpg" alt="作为一个设计师,如果遭到质疑你是否能恪守自己的原则"></a></span> -->
+          <!-- <p class="blogtext">曾经有站长找我求助，他说他不知道该怎么办，自己做出来的网站，不仅没有得到大家的认可，反而让大家给他开了一个评判大会。他自己认为已经是做的最好的，却遭受大家无情的... </p> -->
           <div class="bloginfo">
             <ul>
-              <li class="lmname"><a href="javascript:;" target="_blank">图片展示</a></li>
-              <li class="timer">2018-07-16</li>
-            </ul>
-          </div>
-        </div>
-        <div class="blog">
-          <h3 class="blogtitle"><a href="javascript:;" target="_blank">作为一个设计师,如果遭到质疑你是否能恪守自己的原则</a></h3>
-          <span class="blogpic"><a href="/more/show/19.html" title="作为一个设计师,如果遭到质疑你是否能恪守自己的原则"><img src="http://www.yangqq.com/d/file/news/life/2018-06-29/75842f4d1e18d692a66c38eb172a40ab.jpg" alt="作为一个设计师,如果遭到质疑你是否能恪守自己的原则"></a></span>
-          <p class="blogtext">曾经有站长找我求助，他说他不知道该怎么办，自己做出来的网站，不仅没有得到大家的认可，反而让大家给他开了一个评判大会。他自己认为已经是做的最好的，却遭受大家无情的... </p>
-          <div class="bloginfo">
-            <ul>
-              <li class="lmname"><a href="javascript:;" target="_blank">图片展示</a></li>
-              <li class="timer">2018-07-16</li>
-            </ul>
-          </div>
-        </div>
-        <div class="blog">
-          <h3 class="blogtitle"><a href="javascript:;" target="_blank">作为一个设计师,如果遭到质疑你是否能恪守自己的原则</a></h3>
-          <span class="blogpic"><a href="/more/show/19.html" title="作为一个设计师,如果遭到质疑你是否能恪守自己的原则"><img src="http://www.yangqq.com/d/file/news/life/2018-06-29/75842f4d1e18d692a66c38eb172a40ab.jpg" alt="作为一个设计师,如果遭到质疑你是否能恪守自己的原则"></a></span>
-          <p class="blogtext">曾经有站长找我求助，他说他不知道该怎么办，自己做出来的网站，不仅没有得到大家的认可，反而让大家给他开了一个评判大会。他自己认为已经是做的最好的，却遭受大家无情的... </p>
-          <div class="bloginfo">
-            <ul>
-              <li class="lmname"><a href="javascript:;" target="_blank">图片展示</a></li>
-              <li class="timer">2018-07-16</li>
-            </ul>
-          </div>
-        </div>
-        <div class="blog">
-          <h3 class="blogtitle"><a href="javascript:;" target="_blank">作为一个设计师,如果遭到质疑你是否能恪守自己的原则</a></h3>
-          <span class="blogpic"><a href="/more/show/19.html" title="作为一个设计师,如果遭到质疑你是否能恪守自己的原则"><img src="http://www.yangqq.com/d/file/news/life/2018-06-29/75842f4d1e18d692a66c38eb172a40ab.jpg" alt="作为一个设计师,如果遭到质疑你是否能恪守自己的原则"></a></span>
-          <p class="blogtext">曾经有站长找我求助，他说他不知道该怎么办，自己做出来的网站，不仅没有得到大家的认可，反而让大家给他开了一个评判大会。他自己认为已经是做的最好的，却遭受大家无情的... </p>
-          <div class="bloginfo">
-            <ul>
-              <li class="lmname"><a href="javascript:;" target="_blank">图片展示</a></li>
-              <li class="timer">2018-07-16</li>
+              <li class="lmname"><a href="javascript:;" target="_blank">{{item.category.name}}</a></li>
+              <li class="timer">{{item.meta.updatedAt}}</li>
             </ul>
           </div>
         </div>
@@ -82,7 +51,37 @@
 
 <script>
 export default {
-  name: 'bhome'
+  name: 'bhome',
+  data () {
+    return {
+      params: {
+        pageIndex: 1,
+        order: '',
+        title: ''
+      },
+      dataList: [],
+      categoryList: []
+    }
+  },
+  mounted () {
+    this.getCategoryList()
+    this.getList()
+  },
+  methods: {
+    getCategoryList () {
+      this.$http.post('/articleCategory/list').then(resp => {
+        let data = resp.data
+        this.categoryList = data
+        console.log('getCategoryList', this.categoryList)
+      })
+    },
+    getList () {
+      this.$http.post('/article/blogHomeList').then(resp => {
+        this.dataList = resp.data
+        console.log('dataList', this.dataList)
+      })
+    }
+  }
 }
 </script>
 
@@ -91,6 +90,7 @@ export default {
   width: 66%;
   float: left;
   overflow: hidden;
+  min-height: 800px;
   z-index: 1;
   clear: both;
   .blogs_box {

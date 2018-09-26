@@ -1,20 +1,20 @@
-import Add from '@/views/system/article/add'
-import Detail from '@/views/system/article/detail'
-import List from '@/views/system/article/list'
+const Add = () => import('@/views/system/article/add')
+const List = () => import('@/views/system/article/list')
+const Edit = () => import('@/views/system/article/edit')
 
 let article = [
   {
     path: 'article/add',
-    name: 'article-add',
+    name: 'system-article-add',
     component: Add
   }, {
-    path: 'article/detail/:id?',
-    name: 'article-detail',
-    component: Detail
-  }, {
     path: 'article/list',
-    name: 'article',
+    name: 'system-article',
     component: List
+  }, {
+    path: 'article/detail/:id?',
+    name: 'system-article-edit',
+    component: Edit
   }
 ]
 export default article
