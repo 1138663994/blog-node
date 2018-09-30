@@ -27,7 +27,8 @@ module.exports = (app) => {
   router.post('/articleCategory/add', isLoginUser, require('./articleCategory').add)
   router.post('/diary/add', isLoginUser, require('./diary').add)
   router.post('/diary/list', isLoginUser, require('./diary').list)
-  router.post('/diary/list', isLoginUser, require('./diary').list)
+  // router.post('/diary/list', isLoginUser, require('./diary').list)
+  router.post('/message/create', require('./message').create)
 
   app
     .use(router.routes())
