@@ -23,7 +23,7 @@ module.exports = {
     }
   },
   async list (ctx, next) { // TODO: 分页，时间查询还没实现
-    let {order, title} = ctx.request.body
+    let {order, title, pageIndex} = ctx.request.body
     let result
     let norder
     if (order === 'desc') {
@@ -34,13 +34,14 @@ module.exports = {
     let obj = {}
     if (title) {
       obj = Object.assign(obj, {
-        title: new RegExp(title, 'i')
+        title: new RegExp(title, 'i') // 模糊搜索
       })
     }
-    result = await articleModel.find(obj, null, {sort: {'_id': norder}}).populate({path: 'category', select: 'name'})
+    let count = pageIndex || 1
+    let pageSize = constants.pageSize
+    result = await articleModel.find(obj, null, {sort: {'_id': norder}}).populate({path: 'category', select: 'name'}).skip((count - 1) * pageSize).limit(pageSize)
     let size = await articleModel.count(obj, null, {sort: {'_id': norder}}).populate({path: 'category', select: 'name'})
     // let result = await articleModel.find({}).populate({path: 'category', select: 'name'})
-    let pageSize = constants.pageSize
     let pageCount = Math.ceil(size / pageSize)
     ctx.body = {
       rows: result,

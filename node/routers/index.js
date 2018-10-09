@@ -29,6 +29,7 @@ module.exports = (app) => {
   router.post('/diary/list', isLoginUser, require('./diary').list)
   // router.post('/diary/list', isLoginUser, require('./diary').list)
   router.post('/message/create', require('./message').create)
+  router.post('/message/detail', require('./message').detail)
 
   app
     .use(router.routes())

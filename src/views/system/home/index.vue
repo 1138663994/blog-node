@@ -1,8 +1,24 @@
 <template>
   <div>
-    <div>
-      <div>本周计划</div>
-      <div>最新文章</div>
+    <div class="play">
+      <div class="left">
+        <div class="hd">
+          <h3>本周计划</h3>
+        </div>
+        <div class="bd">
+          <div>1.</div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="hd">
+          <h3>本月计划</h3>
+        </div>
+        <div class="bd">
+          1. 明朝那些事读完
+          2. 健身10次
+          3. 编写最少4篇文章
+        </div>
+      </div>
     </div>
     <div>
       <div id="fullcalendar"></div>

@@ -161,10 +161,12 @@ export default {
       this.list()
     },
     handleCurrentChange (i) {
-      console.log(i)
+      console.log('handleCurrentChange', i)
+      this.params.pageIndex = i
+      this.list()
     },
     handleSizeChange (i) {
-      console.log(i)
+      console.log('handleSizeChange', i)
     },
     sortChange ({ column, prop, order }) {
       let orders
@@ -198,6 +200,7 @@ export default {
         this.listData = resp.data.rows
         console.log('resp', resp.data)
         this.loadFlag = false
+        this.total = resp.data.total
       })
     },
     remove (item) {

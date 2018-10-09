@@ -8,6 +8,10 @@ const messageSchema = new Schema({
     ref: 'article',
     require: true
   },
+  name: {
+    type: String,
+    require: true
+  },
   content: {
     type: String,
     require: true
