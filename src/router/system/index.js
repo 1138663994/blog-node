@@ -7,7 +7,7 @@ console.log('sss', Page)
 const routes = [
   {
     path: '/system',
-    name: 'system',
+    name: 'system-home',
     component: backLayout,
     redirect: '/system/home',
     children: [

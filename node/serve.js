@@ -7,7 +7,12 @@ const bodyParser = require('koa-bodyparser') // 解析post参数
 const path = require('path')
 const static = require('koa-static')
 
+const koaJwt = require('koa-jwt') // 路由权限控制
+const jwt = require('jwt-simple') // token生成 有毒这个，有效期要转化为时间戳为秒的形式。也就是得把时间戳除以1000
+const jwtSecret = require('./constant').jwtSecret // 秘钥
+
 const app = new Koa()
+
 // const user = require('./routers/user')
 const CONFIG = require('../mongon/')
 const mongoose = require('mongoose')
@@ -17,6 +22,13 @@ mongoose.connect(CONFIG.mongodb)
 
 app.keys = ['nodeDemo']
 app.use(bodyParser())
+
+
+// 验证token
+app.use(koaJwt({secret: jwtSecret}).unless({
+  path: [/^\/blogapi\/public/] // 不验证的接口
+}))
+
 
 const staticPath = '../dist'
  
@@ -28,9 +40,6 @@ app.use(session({
   key: CONFIG.session.key,
   maxAge: CONFIG.session.maxAge
 }, app))
-
-// 添加路由
-// router.post('/login', user.signup)
 
 router(app)
 app.listen(3000, () => {

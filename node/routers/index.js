@@ -1,4 +1,5 @@
 const Router = require('koa-router')
+
 async function isLoginUser (ctx, next) {
   if (!ctx.session.user) {
     ctx.status = 401
@@ -8,15 +9,16 @@ async function isLoginUser (ctx, next) {
     }
     return
   }
+  console.log('需要验证')
   await next()
 }
 const router = new Router({
   prefix: '/blogapi'
 })
 module.exports = (app) => {
-  router.post('/register', require('./user').register)
-  router.post('/login', require('./user').login)
-  router.post('/loginout', require('./user').loginOut)
+  router.post('/public/register', require('./user').register)
+  router.post('/public/login', require('./user').login)
+  router.post('/public/loginout', require('./user').loginOut)
   router.post('/article/add', isLoginUser, require('./article').add)
   router.post('/article/list', isLoginUser, require('./article').list)
   router.post('/article/blogHomeList', require('./article').blogHomeList)
@@ -27,7 +29,6 @@ module.exports = (app) => {
   router.post('/articleCategory/add', isLoginUser, require('./articleCategory').add)
   router.post('/diary/add', isLoginUser, require('./diary').add)
   router.post('/diary/list', isLoginUser, require('./diary').list)
-  // router.post('/diary/list', isLoginUser, require('./diary').list)
   router.post('/message/create', require('./message').create)
   router.post('/message/detail', require('./message').detail)
 

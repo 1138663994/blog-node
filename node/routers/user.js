@@ -1,4 +1,15 @@
 const UserModel = require('../../mongon/user')
+const jwt = require('jwt-simple') // token生成 有毒这个，有效期要转化为时间戳为秒的形式。也就是得把时间戳除以1000
+const jwtSecret = require('../constant').jwtSecret // 秘钥
+
+const getToken = () => {
+  let payload = {
+    exp: (Date.now() + 1000 * 60 * 60 * 1) / 1000, // token有效期, 有效期为一个小时
+    name: 'lisi'
+  }
+  let token = jwt.encode(payload, jwtSecret) // 编码token，解码用jwt.decode(token.split(' ')[1], jwtSecret)。传过来的token=Bearer token。
+  return token
+}
 
 module.exports = {
   async register (ctx, next) {
@@ -7,7 +18,6 @@ module.exports = {
       name,
       password
     }
-    console.log('user', user)
     const result = await UserModel.create(user)
     if (result) {
       ctx.body = {
@@ -25,7 +35,11 @@ module.exports = {
         name: user.name,
         isAdmin: user.isAdmin
       }
-      ctx.body = { success: '登录成功' }
+      let token = getToken()
+      ctx.body = {
+        code: '1',
+        token
+      }
     } else {
       ctx.body = { fail: '用户名或者密码错误' }
     }
@@ -33,6 +47,7 @@ module.exports = {
   async loginOut (ctx, next) {
     if (ctx.session.user) {
       ctx.session.user = ''
+      getToken()
       ctx.body = {
         code: 1,
         title: '操作成功'
