@@ -15,7 +15,7 @@ export default new Router({
     },
     {
       path: '/',
-      redirect: '/blog/home'
+      redirect: '/webblog/home'
     },
     ...Systemlayout,
     ...Common,

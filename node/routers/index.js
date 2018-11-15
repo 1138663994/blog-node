@@ -16,12 +16,18 @@ const router = new Router({
   prefix: '/blogapi'
 })
 module.exports = (app) => {
+  router.get('/public/abc', async (ctx, next) =>{
+    ctx.body={
+      code: 1,
+      message: 'sss'
+    }
+  })
   router.post('/public/register', require('./user').register)
   router.post('/public/login', require('./user').login)
   router.post('/public/loginout', require('./user').loginOut)
   router.post('/article/add', isLoginUser, require('./article').add)
   router.post('/article/list', isLoginUser, require('./article').list)
-  router.post('/article/blogHomeList', require('./article').blogHomeList)
+  router.post('/public/article/blogHomeList', require('./article').blogHomeList)
   router.post('/article/remove', isLoginUser, require('./article').remove)
   router.post('/article/edit', isLoginUser, require('./article').edit)
   router.post('/article/getDetail', require('./article').detail)

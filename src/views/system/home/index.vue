@@ -6,7 +6,8 @@
           <h3>本周计划</h3>
         </div>
         <div class="bd">
-          <div>1.</div>
+          <div>1.看完Node部署视频</div>
+          <div>2.图解http</div>
         </div>
       </div>
       <div class="right">

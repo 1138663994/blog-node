@@ -76,7 +76,7 @@ export default {
       })
     },
     getList () {
-      this.$http.post('/article/blogHomeList').then(resp => {
+      this.$http.post('/public/article/blogHomeList').then(resp => {
         this.dataList = resp.data
         console.log('dataList', this.dataList)
       })

@@ -8,8 +8,6 @@
         <el-input v-model.trim="ruleForm.psw"></el-input>
       </el-form-item>
       <el-button type="primary"  @click="submitForm('ruleForm')">登录</el-button>
-      <el-button type="primary"  @click="login2">登录2</el-button>
-      <el-button type="primary"  @click="getinfo">登录3</el-button>
     </el-form>
   </div>
 </template>
@@ -55,22 +53,6 @@ export default {
         } else {
           console.log('error submit!!')
         }
-      })
-    },
-    login2 () {
-      this.$http.post('/public/login2').then(resp => {
-        console.log('resp', resp.data)
-        this.token = resp.data.token
-      })
-    },
-    getinfo () {
-      let config = {
-        headers: {
-          Authorization: 'Bearer ' + this.token // Bearer是JWT的认证头部信息
-        }
-      }
-      this.$http.post('/user2', {}, config).then(resp => {
-        console.log('resp', resp.data)
       })
     }
   }

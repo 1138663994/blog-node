@@ -4,10 +4,10 @@ const blogLayout = () => import('@/views/blogLayout')
 console.log('blogLayout')
 const routes = [
   {
-    path: '/blog',
+    path: '/webblog',
     name: 'blog',
     component: blogLayout,
-    redirect: '/blog/home',
+    redirect: '/webblog/home',
     children: [
       ...Home
     ]

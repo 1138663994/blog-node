@@ -26,7 +26,7 @@ app.use(bodyParser())
 
 // 验证token
 app.use(koaJwt({secret: jwtSecret}).unless({
-  path: [/^\/blogapi\/public/] // 不验证的接口
+  path: [/^\/blogapi\/public/, /^\/web-blog/, /^\/static/] // 不验证的接口
 }))
 
 
