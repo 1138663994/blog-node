@@ -16,7 +16,7 @@
       "user": "zzw",
       "host": ["47.95.200.216"],
       "port": "8888",
-      "ref": "origin/develop",
+      "ref": "origin/master",
       "repo": "https://github.com/1138663994/vueDemo.git",
       "path": "/www/blog/production",
       "ssh_options": "StrictHostKeyChecking=no",
