@@ -1,0 +1,29 @@
+{
+  "apps": [
+    {
+      "name": "blog",
+      "script": "node/serve.js",
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "env_production": {
+        "NODE_ENV": "production"
+      }
+    }
+  ],
+  "deploy": {
+    "production": {
+      "user": "zzw",
+      "host": ["47.95.200.216"],
+      "port": "8888",
+      "ref": "origin/develop",
+      "repo": "https://github.com/1138663994/vueDemo.git",
+      "path": "/www/blog/production",
+      "ssh_options": "StrictHostKeyChecking=no",
+      "post-deploy": "npm install && npm yun build && pm2 startOrRestart ecosystem.json --env production",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
+  }
+}

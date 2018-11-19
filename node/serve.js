@@ -18,7 +18,13 @@ const CONFIG = require('../mongon/')
 const mongoose = require('mongoose')
 const router = require('./routers')
 
-mongoose.connect(CONFIG.mongodb)
+let env = process.env.NODE_ENV || 'development'
+
+if (env === 'development') {
+  mongoose.connect(CONFIG.mongodb)
+} else {
+  mongoose.connect('mongodb://zzw_blog:abc123456@127.0.0.1:29999/blog')
+}
 
 app.keys = ['nodeDemo']
 app.use(bodyParser())
