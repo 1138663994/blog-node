@@ -30,7 +30,7 @@ module.exports = (app) => {
   router.post('/public/article/blogHomeList', require('./article').blogHomeList)
   router.post('/public/article/getDetail', require('./article').blogDetail)
   router.post('/public/sign', require('./sign').getSign)
-  router.post('/public/blogArticleCategory/list', isLoginUser, require('./articleCategory').blogList)
+  router.post('/public/blogArticleCategory/list', require('./articleCategory').blogList)
 
   router.post('/article/add', isLoginUser, require('./article').add)
   router.post('/article/list', isLoginUser, require('./article').list)
