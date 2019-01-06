@@ -22,14 +22,14 @@ module.exports = {
       ctx.body = result
     }
   },
-  async list (ctx, next) { // TODO: 分页，时间查询还没实现
+  async list (ctx, next) { // TODO: 分页，分类，时间查询还没实现
     let {order, title, pageIndex} = ctx.request.body
     let result
-    let norder
-    if (order === 'desc') {
-      norder = -1
-    } else {
+    let norder = -1
+    if (order === 'asce') {
       norder = 1
+    } else {
+      norder = -1
     }
     let obj = {}
     if (title) {
@@ -51,7 +51,7 @@ module.exports = {
     }
   },
   async blogHomeList (ctx, next) {
-    let result = await articleModel.find({'isOpen': true}).populate({path: 'category', select: 'name'}).limit(10)
+    let result = await articleModel.find({'isOpen': true}, null, {sort: {'_id': -1}}).populate({path: 'category', select: 'name'}).limit(10)
     ctx.body = result
   },
   async remove (ctx, next) {
@@ -70,6 +70,11 @@ module.exports = {
     ctx.body = result
   },
   async detail (ctx, next) {
+    let {id} = ctx.request.body
+    const result = await articleModel.findById(id).populate({path: 'category', select: 'name'})
+    ctx.body = result
+  },
+  async blogDetail (ctx, next) {
     let {id} = ctx.request.body
     const result = await articleModel.findById(id).populate({path: 'category', select: 'name'})
     ctx.body = result

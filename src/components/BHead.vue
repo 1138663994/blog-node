@@ -20,7 +20,15 @@
 
 <script>
 export default {
-  name: 'BHead'
+  name: 'BHead',
+  data () {
+    return {
+    }
+  },
+  mounted () {
+  },
+  methods: {
+  }
 }
 </script>
 
@@ -55,6 +63,13 @@ export default {
           }
         }
       }
+    }
+    .sign {
+      position: absolute;
+      right: 10px;
+      top: 5px;
+      color: #fff;
+      font-size: 12px;
     }
   }
 </style>

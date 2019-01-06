@@ -16,5 +16,11 @@ module.exports = {
     if (result) {
       ctx.body = result
     }
+  },
+  async blogList (ctx, next) {
+    const result = await articleCategoryModel.find({})
+    if (result) {
+      ctx.body = result
+    }
   }
 }

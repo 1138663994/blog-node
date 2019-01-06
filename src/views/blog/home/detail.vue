@@ -1,39 +1,41 @@
 <template>
-  <div>
-    <div class="title">
-      <h3>{{article.title}}</h3>
-    </div>
-    <div class="content">
-      <mavon-editor v-model="article.content" class="mavon" :subfield='false' :boxShadow='false' :toolbarsFlag='false' :editable='false' defaultOpen='preview'/>
-    </div>
-    <div class="comments" v-if='commentList.length'>
-      <div class="hd">
-        留言({{commentList.length}}条)
+  <div class="acticle-detail">
+    <div class="a-d-wrap">
+      <div class="title">
+        <h3>{{article.title}}</h3>
       </div>
-      <div class="bd">
-        <div v-for='item in commentList' :key='item.id' class="messgBox">
-          <div class="name">{{item.name}}说：</div>
-          <div class="content">{{item.content}}</div>
-          <div class="createTime">时间：{{item.createTime}}</div>
+      <div class="content">
+        <mavon-editor v-model="article.content" class="mavon" :subfield='false' :boxShadow='false' :toolbarsFlag='false' :editable='false' defaultOpen='preview'/>
+      </div>
+      <div class="comments" v-if='commentList.length'>
+        <div class="hd">
+          留言({{commentList.length}}条)
+        </div>
+        <div class="bd">
+          <div v-for='item in commentList' :key='item.id' class="messgBox">
+            <div class="name">{{item.name}}说：</div>
+            <div class="content">{{item.content}}</div>
+            <div class="createTime">时间：{{item.createTime}}</div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="message">
-      <h3>我想说点什么</h3>
-      <div class="c">
-        <span>您的留言：</span>
-        <textarea v-model="content"></textarea>
-      </div>
-      <div>
-        <span>您的大名</span>
-        <el-input v-model="name" />
-      </div>
-      <div>
-        <span>电子邮件(还没校验)</span>
-        <el-input v-model="email"/>
-      </div>
-      <div class="btns">
-        <el-button @click="submit">提交</el-button>
+      <div class="message">
+        <h3>我想说点什么</h3>
+        <div class="c">
+          <span>您的留言：</span>
+          <textarea v-model="content"></textarea>
+        </div>
+        <div>
+          <span>您的大名</span>
+          <el-input v-model="name" />
+        </div>
+        <div>
+          <span>电子邮件(还没校验)</span>
+          <el-input v-model="email"/>
+        </div>
+        <div class="btns">
+          <el-button @click="submit">提交</el-button>
+        </div>
       </div>
     </div>
   </div>
@@ -61,7 +63,7 @@ export default {
       let param = {
         id
       }
-      this.$http.post('/article/getDetail', param).then(resp => {
+      this.$http.post('/public/article/getDetail', param).then(resp => {
         console.log('detail', resp.data)
         const data = resp.data
         this.article = data
@@ -71,7 +73,7 @@ export default {
       let params = {
         fromId: this.$route.query.id
       }
-      this.$http.post('/message/detail', params).then(resp => {
+      this.$http.post('/public/message/detail', params).then(resp => {
         console.log('getMessage', resp.data)
         this.commentList = resp.data
       })
@@ -83,7 +85,7 @@ export default {
         name: this.name,
         email: this.email
       }
-      this.$http.post('/message/create', params).then(resp => {
+      this.$http.post('/public/message/create', params).then(resp => {
         console.log('resp', resp.data)
         this.name = ''
         this.content = ''
@@ -143,6 +145,12 @@ export default {
 </style>
 
 <style lang='scss'>
+.acticle-detail {
+  width: 1140px;
+  .a-d-wrap {
+    width: 66%;
+  }
+}
 .message {
   .el-input {
     width: 300px;

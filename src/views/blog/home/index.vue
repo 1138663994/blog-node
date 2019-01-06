@@ -17,35 +17,6 @@
         </div>
       </div>
     </div>
-    <div class="sidebar">
-      <div class="category module">
-        <div class="hd">
-          <h3>分类</h3>
-        </div>
-        <!-- <div class="bd">
-          <ul>
-            <li>
-              <a href="javascript:;">
-                <span>javascript</span>
-                <em>1篇</em>
-              </a>
-            </li>
-            <li>
-              <a href="javascript:;">
-                <span>javascript</span>
-                <em>1篇</em>
-              </a>
-            </li>
-            <li>
-              <a href="javascript:;">
-                <span>javascript</span>
-                <em>1篇</em>
-              </a>
-            </li>
-          </ul>
-        </div> -->
-      </div>
-    </div>
   </div>
 </template>
 
@@ -59,22 +30,13 @@ export default {
         order: '',
         title: ''
       },
-      dataList: [],
-      categoryList: []
+      dataList: []
     }
   },
   mounted () {
-    // this.getCategoryList()
     this.getList()
   },
   methods: {
-    getCategoryList () {
-      this.$http.post('/articleCategory/list').then(resp => {
-        let data = resp.data
-        this.categoryList = data
-        console.log('getCategoryList', this.categoryList)
-      })
-    },
     getList () {
       this.$http.post('/public/article/blogHomeList').then(resp => {
         this.dataList = resp.data
@@ -153,44 +115,5 @@ export default {
     }
   }
 }
-.sidebar {
-  width: 32%;
-  overflow: hidden;
-  float: right;
-  .module {
-    padding: 35px 30px;
-    margin-bottom: 20px;
-    background: #FFF;
-    .hd {
-      font-size: 18px;
-      color: #282828;
-      font-weight: 600;
-      margin: 0;
-      text-transform: uppercase;
-      margin-bottom: 25px;
-      position: relative;
-      h3 {
-        padding-left: 15px;
-        border-left: 3px solid #282828;
-      }
-    }
-    .bd {
-      li {
-        margin-bottom: 8px;
-      }
-      a {
-        display: block;
-        color: #333;
-        line-height: 22px;
-        &:hover {
-          color: #00A7EB;
-        }
-        em {
-          float: right;
-          font-size: 12px;
-        }
-      }
-    }
-  }
-}
+
 </style>

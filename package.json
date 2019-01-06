@@ -29,6 +29,8 @@
     "mavon-editor": "^2.6.17",
     "moment": "^2.22.2",
     "mongoose": "^5.2.10",
+    "superagent": "^4.1.0",
+    "superagent-charset": "^1.2.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"

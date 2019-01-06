@@ -6,7 +6,6 @@ const session = require('koa-session') // 可以让koa使用session 例如ctx.se
 const bodyParser = require('koa-bodyparser') // 解析post参数
 const path = require('path')
 const static = require('koa-static')
-
 const koaJwt = require('koa-jwt') // 路由权限控制
 const jwt = require('jwt-simple') // token生成 有毒这个，有效期要转化为时间戳为秒的形式。也就是得把时间戳除以1000
 const jwtSecret = require('./constant').jwtSecret // 秘钥
