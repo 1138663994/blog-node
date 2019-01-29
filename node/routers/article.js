@@ -51,8 +51,22 @@ module.exports = {
     }
   },
   async blogHomeList (ctx, next) {
-    let result = await articleModel.find({'isOpen': true}, null, {sort: {'_id': -1}}).populate({path: 'category', select: 'name'}).limit(10)
-    ctx.body = result
+    let {pageIndex} = ctx.request.body
+    let result
+    let norder = -1
+    let obj = {}
+    let count = pageIndex || 1
+    let pageSize = constants.pageSize
+    result = await articleModel.find(obj, null, {sort: {'_id': norder}}).populate({path: 'category', select: 'name'}).skip((count - 1) * pageSize).limit(pageSize)
+    let size = await articleModel.count(obj, null, {sort: {'_id': norder}}).populate({path: 'category', select: 'name'})
+    // let result = await articleModel.find({}).populate({path: 'category', select: 'name'})
+    let pageCount = Math.ceil(size / pageSize)
+    ctx.body = {
+      rows: result,
+      total: size,
+      pageSize,
+      pageCount
+    }
   },
   async remove (ctx, next) {
     let {id} = ctx.request.body

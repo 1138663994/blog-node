@@ -21,9 +21,6 @@ export default {
   components: {
     CMenu,
     CHead
-  },
-  methods () {
-    console.log('systemlayout')
   }
 }
 </script>

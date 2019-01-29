@@ -27,7 +27,7 @@
     "koa-session": "^5.9.0",
     "koa-static": "^5.0.0",
     "mavon-editor": "^2.6.17",
-    "moment": "^2.22.2",
+    "moment": "^2.23.0",
     "mongoose": "^5.2.10",
     "superagent": "^4.1.0",
     "superagent-charset": "^1.2.0",

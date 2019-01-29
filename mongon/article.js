@@ -1,9 +1,8 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const date = new Date()
-console.log('date', date.getTime())
-console.log('date', date)
-console.log('date', new Date(date.getTime()+8*60*60*1000))
+var moment = require('moment')
+let time = moment(new Date()).format('YYYY-MM-DD H:mm:ss')
 const articleSchema = new Schema({
   authorId: {
     type: Schema.Types.ObjectId,
@@ -36,21 +35,21 @@ const articleSchema = new Schema({
   },
   meta: {
     createdAt: {
-      type: Date,
-      default: new Date(date.getTime()+8*60*60*1000)
+      type: String,
+      default: moment(new Date()).format('YYYY-MM-DD H:mm:ss')
     },
     updatedAt: {
-      type: Date,
-      default: new Date(date.getTime()+8*60*60*1000)
+      type: String,
+      default: moment(new Date()).format('YYYY-MM-DD H:mm:ss')
     }
   }
 })
 
 articleSchema.pre('save', function (next) {
   if (this.isNew) {
-    this.meta.createdAt = this.meta.updatedAt = new Date(date.getTime()+8*60*60*1000)
+    this.meta.createdAt = this.meta.updatedAt = moment(new Date()).format('YYYY-MM-DD H:mm:ss')
   } else {
-    this.meta.updatedAt = new Date(date.getTime()+8*60*60*1000)
+    this.meta.updatedAt = moment(new Date()).format('YYYY-MM-DD H:mm:ss')
   }
   next()
 })

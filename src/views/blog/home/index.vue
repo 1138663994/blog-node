@@ -15,6 +15,9 @@
             </ul>
           </div>
         </div>
+        <div class="more" @click="lookMore" v-if='loadFlag'>
+          <a href="javascript:;">查看更多</a>
+        </div>
       </div>
     </div>
   </div>
@@ -25,23 +28,35 @@ export default {
   name: 'bhome',
   data () {
     return {
-      params: {
-        pageIndex: 1,
-        order: '',
-        title: ''
-      },
-      dataList: []
+      pageIndex: 1,
+      dataList: [],
+      loadFlag: false
     }
   },
   mounted () {
     this.getList()
   },
   methods: {
-    getList () {
-      this.$http.post('/public/article/blogHomeList').then(resp => {
-        this.dataList = resp.data
-        console.log('dataList', this.dataList)
+    getList (loadMore = false) {
+      let params = {
+        pageIndex: this.pageIndex
+      }
+      this.$http.post('/public/article/blogHomeList', params).then(resp => {
+        resp.data.rows.map(item => {
+          let time = new Date(item.meta.updatedAt).toString()
+          console.log('item', time)
+        })
+        if (loadMore) {
+          this.dataList = [...this.dataList, ...resp.data.rows]
+        } else {
+          this.dataList = resp.data.rows
+        }
+        this.loadFlag = this.dataList.length < resp.data.total
       })
+    },
+    lookMore () {
+      this.pageIndex++
+      this.getList(true)
     }
   }
 }

@@ -62,6 +62,10 @@ export default {
       console.log('param', params)
       this.$http.post('/article/add', params).then(resp => {
         console.log('resp', resp.data)
+        this.$message({
+          message: '发布成功',
+          type: 'success'
+        })
       })
     },
     getCategoryList () {

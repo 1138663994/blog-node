@@ -27,6 +27,7 @@ import { Button,
   Switch,
   DatePicker,
   Loading,
+  Message,
   Pagination
 } from 'element-ui'
 import http from './http'
@@ -53,7 +54,7 @@ Vue.use(Loading)
 Vue.use(Pagination)
 
 Vue.prototype.$http = http
-
+Vue.prototype.$message = Message
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

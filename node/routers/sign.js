@@ -18,7 +18,7 @@ async function getData (i) {
   })
 }
 let i = 1, j = 0
-let signData
+let signData = []
 module.exports = {
   async getSign (ctx, next) {
     if (j == 0) {
@@ -31,11 +31,7 @@ module.exports = {
     if (i >30) {
       i = 0
     }
-    let codeData = signData[j]
-    if (!codeData) {
-      codeData = '努力活成自己想要的样子吧。'
-    }
-    console.log('sign', codeData)
+    let codeData = signData[j] ? signData[j] : '努力活成自己想要的样子吧。'
     ctx.body = {
       code: 1,
       data: codeData
