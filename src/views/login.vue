@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import {setItem} from '@/util/sessionStorage'
+import {setToken} from '@/util/sessionStorage'
 export default {
   name: 'login',
   data () {
@@ -47,7 +47,7 @@ export default {
           console.log('params', params)
           this.$http.post('/public/login', params).then(resp => {
             console.log('resp', resp.data)
-            setItem('token', resp.data)
+            setToken(resp.data)
             this.$router.push({name: 'system-home'})
           })
         } else {

@@ -38,7 +38,6 @@
 
 <script>
 import menuRoutes from '@/menuRoutes'
-console.log('menuRoutes', menuRoutes)
 export default {
   name: 'CMenu',
   data () {

@@ -43,9 +43,7 @@
 
 <script>
 import 'fullcalendar'
-import moment from 'moment'
 import 'fullcalendar/dist/locale/zh-cn.js'
-window.moment = moment
 
 export default {
   name: 'Home',

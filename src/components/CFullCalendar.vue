@@ -4,14 +4,13 @@
 
 <script>
 import 'fullcalendar'
-import moment from 'moment'
 import 'fullcalendar/dist/locale/zh-cn.js'
-window.moment = moment
 
 export default {
   name: 'CFullcalendar',
   mounted () {
-    this.instance = $('#fullcalendar').fullCalendar(_.extend(this.defaultOptions, this.options))
+    let config = Object.assign({}, this.defaultOptions, this.options)
+    this.instance = $('#fullcalendar').fullCalendar(config)
   },
   data () {
     return {

@@ -24,17 +24,23 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   name: 'bhome',
+  asyncData ({ store, route }) {
+    return Promise.all([
+      store.dispatch('setDatalist')
+    ])
+  },
   data () {
     return {
       pageIndex: 1,
-      dataList: [],
       loadFlag: false
     }
   },
   mounted () {
-    this.getList()
+    // this.getList()
+    console.log('store', this.$store)
   },
   methods: {
     getList (loadMore = false) {
@@ -58,6 +64,14 @@ export default {
       this.pageIndex++
       this.getList(true)
     }
+  },
+  computed: {
+    ...mapState({
+      dataList (state) {
+        console.log('dataList', state)
+        return state.BlogHome.dataList
+      }
+    })
   }
 }
 </script>

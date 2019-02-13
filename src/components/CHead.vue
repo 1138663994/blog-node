@@ -5,14 +5,14 @@
 </template>
 
 <script>
-import {removeItem} from '@/util/sessionStorage'
+import {removeToken} from '@/util/sessionStorage'
 export default {
   name: 'CHead',
   methods: {
     layout () {
       this.$http.post('/public/loginout').then(resp => {
         console.log('退出登录', resp.data)
-        removeItem('token')
+        removeToken()
         this.$router.push({name: 'login'})
       })
     }

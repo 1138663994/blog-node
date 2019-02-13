@@ -1,7 +1,6 @@
 import Home from './home'
 
 const blogLayout = () => import('@/views/blogLayout')
-console.log('blogLayout')
 const routes = [
   {
     path: '/webblog',

@@ -60,12 +60,10 @@ export default {
       this.$http.post('/public/blogArticleCategory/list').then(resp => {
         let data = resp.data
         this.categoryList = data
-        console.log('blogArticleCategory', this.categoryList)
       })
     },
     getSign () {
       this.$http.post('/public/sign').then(resp => {
-        console.log('signresp', resp.data)
         this.signData = resp.data.data
       })
     }

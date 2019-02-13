@@ -90,6 +90,7 @@ module.exports = {
   },
   async blogDetail (ctx, next) {
     let {id} = ctx.request.body
+    console.log('id', ctx.request.body)
     const result = await articleModel.findById(id).populate({path: 'category', select: 'name'})
     ctx.body = result
   }

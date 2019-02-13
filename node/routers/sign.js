@@ -22,7 +22,7 @@ let signData = []
 module.exports = {
   async getSign (ctx, next) {
     if (j == 0) {
-      signData =  await getData(i)
+      // signData =  await getData(i)
     }
     if (j > 3) {
       i++
